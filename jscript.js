@@ -29,7 +29,10 @@ function showMovies(movie) {
         clone.querySelector(".actors").appendChild(elemLi);
 
     }
-
+    const art = clone.querySelector('article');
+    genreSplit.forEach(genre=>{
+        art.classList.add(genre)
+    })
     clone.querySelector(".year span").textContent = movie.gsx$year.$t;
     clone.querySelector(".title span").textContent = movie.gsx$name.$t;
     clone.querySelector(".director span").textContent = movie.gsx$director.$t;
@@ -38,3 +41,34 @@ function showMovies(movie) {
 
 
 }
+
+document.querySelectorAll('.filters button').forEach(button=>{
+    button.addEventListener('click', function(){
+        //console.log(button.dataset.filter)
+        filterByGenre(button.dataset.filter)
+    })
+})
+/*document.querySelector("#dramafilter").addEventListener("click", function(){
+    filterByGenre('drama')
+});
+document.querySelector("#crimefilter").addEventListener("click", function(){
+    filterByGenre('crime')
+});*/
+function filterByGenre(genre) {
+    document.querySelectorAll(".oneMovie").forEach(oneMovie=>{
+        if(oneMovie.classList.contains(genre)){
+             oneMovie.classList.remove('hide')
+        } else {
+            oneMovie.classList.add('hide')
+        }
+    })
+}
+
+document.querySelector("#all").addEventListener("click", showAll);
+
+function showAll() {
+    document.querySelectorAll(".oneMovie").forEach(oneMovie=>{
+        oneMovie.classList.remove("hide")
+    })
+}
+
