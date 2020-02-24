@@ -12,9 +12,9 @@ function handleData(data) {
 
 function showMovies(movie) {
 
-    const genreSplit = movie.gsx$genre.$t.split(",");
+    const genreSplit = movie.gsx$genre.$t.split(", ");
     console.log(genreSplit);
-    const actorSplit = movie.gsx$mainactor.$t.split(",");
+    const actorSplit = movie.gsx$mainactor.$t.split(", ");
     console.log(actorSplit);
 
     const template = document.querySelector("template").content;
